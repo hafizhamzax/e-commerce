@@ -1,4 +1,5 @@
 import { getAllProducts } from '@/lib/server-db';
+import type { Product } from '@/lib/types';
 import { ProductGrid } from '@/components/ProductGrid';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -6,7 +7,7 @@ import Link from 'next/link';
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  let products;
+  let products: Product[] = [];
   try {
     products = await getAllProducts({ take: 5 });
   } catch (error) {

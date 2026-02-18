@@ -1,6 +1,7 @@
 import { getSession } from "@/lib/get-session";
 import { redirect } from "next/navigation";
 import { getAllProducts } from "@/lib/server-db";
+import type { Product } from "@/lib/types";
 import AdminForm from "./AdminForm";
 
 export const dynamic = 'force-dynamic';
@@ -12,7 +13,7 @@ export default async function AdminPage() {
         redirect("/admin/login");
     }
 
-    let products;
+    let products: Product[] = [];
     try {
         products = await getAllProducts();
     } catch (error) {
