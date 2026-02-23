@@ -99,7 +99,7 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
             </div>
 
             <div className="grid lg:grid-cols-2 gap-10 items-start">
-                <Card className="glass shadow-2xl border-white/5 order-2 lg:order-1">
+                <Card className="bg-white dark:bg-white/[0.03] shadow-2xl border border-gray-200 dark:border-white/5 order-2 lg:order-1">
                     <CardHeader>
                         <CardTitle className="text-2xl font-black tracking-tight">Add New Product</CardTitle>
                     </CardHeader>
@@ -112,7 +112,7 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
                                     placeholder="Premium UI Kit"
                                     value={formData.title}
                                     onChange={handleChange}
-                                    className="h-12 rounded-xl bg-background/50 border-white/5 focus:border-primary/50"
+                                    className="h-12 rounded-xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 focus:border-purple-400 dark:focus:border-purple-500 text-gray-900 dark:text-white placeholder:text-gray-400"
                                     required
                                 />
                             </div>
@@ -125,7 +125,7 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
                                         placeholder="premium-ui-kit"
                                         value={formData.slug}
                                         onChange={handleChange}
-                                        className="h-12 rounded-xl bg-background/50 border-white/5 focus:border-primary/50"
+                                        className="h-12 rounded-xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 focus:border-purple-400 dark:focus:border-purple-500 text-gray-900 dark:text-white placeholder:text-gray-400"
                                         required
                                     />
                                 </div>
@@ -137,7 +137,7 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
                                         placeholder="29.99"
                                         value={formData.price}
                                         onChange={handleChange}
-                                        className="h-12 rounded-xl bg-background/50 border-white/5 focus:border-primary/50"
+                                        className="h-12 rounded-xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 focus:border-purple-400 dark:focus:border-purple-500 text-gray-900 dark:text-white placeholder:text-gray-400"
                                         required
                                     />
                                 </div>
@@ -150,7 +150,7 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
                                     placeholder="https://gum.co/l/..."
                                     value={formData.gumroadLink}
                                     onChange={handleChange}
-                                    className="h-12 rounded-xl bg-background/50 border-white/5 focus:border-primary/50"
+                                    className="h-12 rounded-xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 focus:border-purple-400 dark:focus:border-purple-500 text-gray-900 dark:text-white placeholder:text-gray-400"
                                     required
                                 />
                             </div>
@@ -162,7 +162,7 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
                                     placeholder="https://..."
                                     value={formData.imageUrl}
                                     onChange={handleChange}
-                                    className="h-12 rounded-xl bg-background/50 border-white/5 focus:border-primary/50"
+                                    className="h-12 rounded-xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 focus:border-purple-400 dark:focus:border-purple-500 text-gray-900 dark:text-white placeholder:text-gray-400"
                                 />
                             </div>
 
@@ -174,7 +174,7 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
                                     value={formData.excerpt}
                                     onChange={handleChange}
                                     rows={2}
-                                    className="rounded-xl bg-background/50 border-white/5 focus:border-primary/50"
+                                    className="rounded-xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 focus:border-purple-400 dark:focus:border-purple-500 text-gray-900 dark:text-white placeholder:text-gray-400"
                                     required
                                 />
                             </div>
@@ -188,13 +188,13 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
                                     onChange={handleChange}
                                     rows={4}
                                     required
-                                    className="font-mono text-xs rounded-xl bg-background/50 border-white/5 focus:border-primary/50"
+                                    className="font-mono text-xs rounded-xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 focus:border-purple-400 dark:focus:border-purple-500 text-gray-900 dark:text-white placeholder:text-gray-400"
                                 />
                             </div>
 
                             {error && <p className="text-destructive text-sm font-bold bg-destructive/10 p-3 rounded-lg border border-destructive/20">{error}</p>}
 
-                            <Button type="submit" disabled={loading} className="w-full h-14 rounded-xl text-lg font-black shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all bg-gradient-to-r from-primary to-purple-600 border-none">
+                            <Button type="submit" disabled={loading} className="w-full h-14 rounded-xl text-lg font-black shadow-2xl shadow-purple-500/20 hover:shadow-purple-500/40 transition-all bg-gradient-to-r from-purple-600 to-violet-600 text-white border-none">
                                 {loading ? <Loader2 className="animate-spin h-6 w-6" /> : 'Publish Product'}
                             </Button>
                         </form>
@@ -214,17 +214,17 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
 
                     <div className="space-y-3 max-h-[800px] overflow-y-auto pr-2 custom-scrollbar">
                         {products.length === 0 ? (
-                            <div className="text-center py-12 bg-white/5 rounded-3xl border border-dashed border-white/10">
-                                <p className="text-muted-foreground text-sm font-medium tracking-tight">Your inventory is empty</p>
+                            <div className="text-center py-12 bg-gray-50 dark:bg-white/5 rounded-3xl border border-dashed border-gray-200 dark:border-white/10">
+                                <p className="text-gray-500 dark:text-muted-foreground text-sm font-medium tracking-tight">Your inventory is empty</p>
                             </div>
                         ) : (
                             products.map((product) => (
-                                <div key={product.id} className="group glass p-4 rounded-3xl border border-white/5 hover:border-primary/30 transition-all flex items-center justify-between gap-4">
+                                <div key={product.id} className="group bg-white dark:bg-white/[0.03] p-4 rounded-3xl border border-gray-200 dark:border-white/5 hover:border-purple-300 dark:hover:border-purple-500/30 transition-all flex items-center justify-between gap-4 shadow-sm">
                                     <div className="flex-1 min-w-0">
-                                        <h3 className="font-bold text-foreground truncate tracking-tight">{product.title}</h3>
+                                        <h3 className="font-bold text-gray-900 dark:text-white truncate tracking-tight">{product.title}</h3>
                                         <div className="flex items-center gap-2 mt-1">
-                                            <span className="text-xs font-black text-primary tracking-wider">{formatCurrency(product.price)}</span>
-                                            <span className="text-[10px] text-muted-foreground uppercase tracking-[0.1em] font-medium border-l border-white/10 pl-2">{product.category || 'Asset'}</span>
+                                            <span className="text-xs font-black text-purple-600 dark:text-purple-400 tracking-wider">{formatCurrency(product.price)}</span>
+                                            <span className="text-[10px] text-gray-400 dark:text-muted-foreground uppercase tracking-[0.1em] font-medium border-l border-gray-200 dark:border-white/10 pl-2">{product.category || 'Asset'}</span>
                                         </div>
                                     </div>
                                     <Button
