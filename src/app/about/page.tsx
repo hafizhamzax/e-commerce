@@ -4,14 +4,14 @@ import { Button } from '@/components/ui/button';
 
 export const metadata = {
     title: 'About - NexaVault',
-    description: 'Learn about NexaVault — the premium marketplace for digital assets, tools, and templates.',
+    description: 'Learn about NexaVault - the premium marketplace for digital assets, tools, and templates.',
 };
 
 const features = [
     {
         icon: Zap,
         title: 'Instant Delivery',
-        description: 'Every product is delivered digitally the moment you purchase — zero waiting, zero hassle.',
+        description: 'Every product is delivered digitally the moment you purchase - zero waiting, zero hassle.',
     },
     {
         icon: Shield,
@@ -50,7 +50,7 @@ export default function AboutPage() {
                 </h1>
 
                 <p className="text-gray-600 dark:text-gray-300 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium">
-                    We're building the ultimate marketplace for premium digital assets —
+                    We're building the ultimate marketplace for premium digital assets -
                     where quality meets instant access.
                 </p>
             </section>
