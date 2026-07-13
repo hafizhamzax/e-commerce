@@ -10,7 +10,6 @@ import { LogOut, Trash2, Loader2, Package } from 'lucide-react';
 import { logout } from '@/lib/auth';
 import { deleteProductAction } from '@/app/actions/product-actions';
 import { Product } from '@/lib/types';
-import { formatCurrency } from '@/lib/utils';
 
 interface AdminFormProps {
     products: Product[];
@@ -22,7 +21,6 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
     const [formData, setFormData] = useState({
         title: '',
         slug: '',
-        price: '',
         description: '',
         excerpt: '',
         gumroadLink: '',
@@ -68,10 +66,7 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
             const res = await fetch('/api/products', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ...formData,
-                    price: parseFloat(formData.price),
-                }),
+                body: JSON.stringify(formData),
             });
 
             if (!res.ok) throw new Error('Failed to create product');
@@ -117,30 +112,16 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
                                 />
                             </div>
 
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] ml-1">Slug</label>
-                                    <Input
-                                        name="slug"
-                                        placeholder="premium-ui-kit"
-                                        value={formData.slug}
-                                        onChange={handleChange}
-                                        className="h-12 rounded-xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 focus:border-purple-400 dark:focus:border-purple-500 text-gray-900 dark:text-white placeholder:text-gray-400"
-                                        required
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] ml-1">Price ($)</label>
-                                    <Input
-                                        name="price"
-                                        type="number"
-                                        placeholder="29.99"
-                                        value={formData.price}
-                                        onChange={handleChange}
-                                        className="h-12 rounded-xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 focus:border-purple-400 dark:focus:border-purple-500 text-gray-900 dark:text-white placeholder:text-gray-400"
-                                        required
-                                    />
-                                </div>
+                            <div className="space-y-2">
+                                <label className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] ml-1">Slug</label>
+                                <Input
+                                    name="slug"
+                                    placeholder="premium-ui-kit"
+                                    value={formData.slug}
+                                    onChange={handleChange}
+                                    className="h-12 rounded-xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 focus:border-purple-400 dark:focus:border-purple-500 text-gray-900 dark:text-white placeholder:text-gray-400"
+                                    required
+                                />
                             </div>
 
                             <div className="space-y-2">
@@ -223,8 +204,7 @@ export default function AdminForm({ products: initialProducts }: AdminFormProps)
                                     <div className="flex-1 min-w-0">
                                         <h3 className="font-bold text-gray-900 dark:text-white truncate tracking-tight">{product.title}</h3>
                                         <div className="flex items-center gap-2 mt-1">
-                                            <span className="text-xs font-black text-purple-600 dark:text-purple-400 tracking-wider">{formatCurrency(product.price)}</span>
-                                            <span className="text-[10px] text-gray-400 dark:text-muted-foreground uppercase tracking-[0.1em] font-medium border-l border-gray-200 dark:border-white/10 pl-2">{product.category || 'Asset'}</span>
+                                            <span className="text-[10px] text-gray-400 dark:text-muted-foreground uppercase tracking-[0.1em] font-medium">{product.category || 'Asset'}</span>
                                         </div>
                                     </div>
                                     <Button

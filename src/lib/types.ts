@@ -4,7 +4,6 @@ export interface Product {
     slug: string;
     description: string; // Markdown/HTML content
     excerpt: string;
-    price: number;
     gumroadLink: string;
     imageUrl: string;
     category: string;

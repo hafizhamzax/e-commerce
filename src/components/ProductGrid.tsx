@@ -7,7 +7,6 @@ import { Product } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { formatCurrency } from '@/lib/utils';
 import { ArrowRight, Search, Loader2, ChevronDown, Link2, Check, Share2 } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { fetchProductsAction } from '@/app/actions/product-actions';
@@ -182,13 +181,7 @@ export function ProductGrid({ products: initialProducts }: ProductGridProps) {
                                 </CardHeader>
 
                                 <CardContent className="pb-12 mt-auto px-12">
-                                    <div className="flex items-center justify-between pt-10 border-t border-gray-200 dark:border-white/[0.1]">
-                                        <div className="flex flex-col">
-                                            <span className="text-[11px] font-black text-purple-600 dark:text-purple-400 uppercase tracking-[0.3em] leading-none mb-4">Investment</span>
-                                            <span className="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-400 to-pink-600 drop-shadow-[0_10px_10px_rgba(236,72,153,0.3)]">
-                                                {formatCurrency(product.price)}
-                                            </span>
-                                        </div>
+                                    <div className="flex items-center justify-end pt-10 border-t border-gray-200 dark:border-white/[0.1]">
                                         <div className="h-18 w-18 md:h-20 md:w-20 rounded-[2rem] bg-gray-100 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-700 dark:text-white group-hover:bg-purple-600 group-hover:border-purple-600 group-hover:text-white group-hover:rotate-[360deg] transition-all duration-1000 shadow-2xl">
                                             <ArrowRight size={32} />
                                         </div>

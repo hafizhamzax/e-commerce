@@ -18,17 +18,6 @@ export default function ProductSchema({ product }: ProductSchemaProps) {
                     "description": product.excerpt,
                     "image": product.imageUrl || `${siteUrl}/og-image.png`,
                     "sku": product.id,
-                    "offers": {
-                        "@type": "Offer",
-                        "url": `${siteUrl}/products/${product.slug}`,
-                        "priceCurrency": "USD",
-                        "price": product.price,
-                        "availability": "https://schema.org/InStock",
-                        "seller": {
-                            "@type": "Organization",
-                            "name": "NexaVault",
-                        },
-                    },
                     "brand": {
                         "@type": "Organization",
                         "name": "NexaVault",

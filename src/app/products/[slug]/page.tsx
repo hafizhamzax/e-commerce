@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, ShoppingCart } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { formatCurrency } from '@/lib/utils';
 import { Metadata } from 'next';
 import ProductSchema from '@/components/seo/ProductSchema';
 
@@ -63,7 +62,7 @@ export default async function ProductPage(props: ProductPageProps) {
                 </Link>
 
             <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-                {/* Left Column: Image & Quick Stats */}
+                {/* Left Column: Image */}
                 <div className="space-y-8 sticky top-24 h-fit">
                     <div className="aspect-video relative rounded-xl overflow-hidden shadow-2xl border border-gray-200 dark:border-border/50 bg-gray-100 dark:bg-muted group">
                         {product.imageUrl ? (
@@ -77,15 +76,8 @@ export default async function ProductPage(props: ProductPageProps) {
                         )}
                     </div>
 
-                    {/* Price + Buy card */}
+                    {/* Buy card */}
                     <div className="bg-white dark:bg-[#0d0d12] p-8 rounded-2xl border border-gray-200 dark:border-white/[0.08] space-y-6 shadow-lg">
-                        <div className="flex justify-between items-end border-b border-gray-100 dark:border-white/10 pb-6">
-                            <div>
-                                <p className="text-xs font-bold text-gray-400 dark:text-gray-500 mb-2 uppercase tracking-widest">Price</p>
-                                <p className="text-5xl font-extrabold text-gray-900 dark:text-white tracking-tighter">{formatCurrency(product.price)}</p>
-                            </div>
-                        </div>
-
                         <a href={product.gumroadLink} target="_blank" rel="noopener noreferrer" className="block transform transition-transform hover:scale-[1.02] active:scale-[0.98]">
                             <Button size="lg" className="w-full text-lg font-bold py-8 bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all rounded-xl border-none">
                                 Buy Now via Gumroad
