@@ -1,10 +1,24 @@
 import Link from 'next/link';
 import { ShoppingBag, Zap, Shield, Globe, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import type { Metadata } from 'next';
 
-export const metadata = {
-    title: 'About - NexaVault',
-    description: 'Learn about NexaVault - the premium marketplace for digital assets, tools, and templates.',
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nexavault.com';
+
+export const metadata: Metadata = {
+    title: 'About',
+    description: 'Learn about NexaVault - the premium marketplace for digital assets, tools, and templates for creators.',
+    keywords: ['about nexavault', 'digital marketplace', 'creator tools', 'premium assets'],
+    openGraph: {
+        title: 'About | NexaVault',
+        description: 'Learn about NexaVault - the premium marketplace for digital assets, tools, and templates for creators.',
+        url: `${siteUrl}/about`,
+        type: 'website',
+    },
+    twitter: {
+        title: 'About | NexaVault',
+        description: 'Learn about NexaVault - the premium marketplace for digital assets, tools, and templates for creators.',
+    },
 };
 
 const features = [

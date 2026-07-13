@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#09090b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad)"/>
+  
+  <!-- Logo circle -->
+  <circle cx="200" cy="315" r="80" fill="url(#accent)"/>
+  <path d="M170 290 L230 290 L230 310 L200 325 L170 310 Z" fill="white" opacity="0.95"/>
+  <rect x="170" y="330" width="60" height="20" rx="5" fill="white" opacity="0.8"/>
+  
+  <!-- Text -->
+  <text x="320" y="280" font-family="Arial, sans-serif" font-size="72" font-weight="900" fill="white">NexaVault</text>
+  <text x="320" y="360" font-family="Arial, sans-serif" font-size="32" font-weight="500" fill="#a1a1aa">Premium Digital Assets Marketplace</text>
+</svg>

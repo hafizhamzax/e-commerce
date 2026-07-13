@@ -2,6 +2,22 @@ import { getAllProducts } from '@/lib/server-db';
 import type { Product } from '@/lib/types';
 import { ProductGrid } from '@/components/ProductGrid';
 import { HeroExploreButton } from '@/components/HeroExploreButton';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'NexaVault - Premium Digital Assets Marketplace',
+  description: 'Discover premium digital assets, templates, and tools for creators. Instant delivery, quality guaranteed.',
+  keywords: ['digital products', 'templates', 'creator tools', 'marketplace', 'premium assets'],
+  openGraph: {
+    title: 'NexaVault - Premium Digital Assets Marketplace',
+    description: 'Discover premium digital assets, templates, and tools for creators. Instant delivery, quality guaranteed.',
+    type: 'website',
+  },
+  twitter: {
+    title: 'NexaVault - Premium Digital Assets Marketplace',
+    description: 'Discover premium digital assets, templates, and tools for creators. Instant delivery, quality guaranteed.',
+  },
+};
 
 export const dynamic = 'force-dynamic';
 

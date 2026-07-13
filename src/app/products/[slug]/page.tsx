@@ -7,6 +7,9 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { formatCurrency } from '@/lib/utils';
 import { Metadata } from 'next';
+import ProductSchema from '@/components/seo/ProductSchema';
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nexavault.com';
 
 interface ProductPageProps {
     params: Promise<{ slug: string }>;
@@ -25,8 +28,21 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     if (!product) return { title: 'Product Not Found' };
 
     return {
-        title: `${product.title} - NexaVault`,
+        title: product.title,
         description: product.excerpt,
+        keywords: [product.title, product.category || 'digital asset', 'premium', 'template', 'creator tool'],
+        openGraph: {
+            title: `${product.title} | NexaVault',
+            description: product.excerpt,
+            url: `${siteUrl}/products/${product.slug}`,
+            type: 'product',
+            images: product.imageUrl ? [product.imageUrl] : ['/og-image.png'],
+        },
+        twitter: {
+            title: `${product.title} | NexaVault`,
+            description: product.excerpt,
+            images: product.imageUrl ? [product.imageUrl] : ['/og-image.png'],
+        },
     };
 }
 
@@ -39,10 +55,12 @@ export default async function ProductPage(props: ProductPageProps) {
     }
 
     return (
-        <div className="max-w-6xl mx-auto py-12 px-4 animate-in fade-in duration-500 overflow-x-hidden">
-            <Link href="/" className="inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-8 text-sm transition-colors group font-medium">
-                <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" /> Back to Products
-            </Link>
+        <>
+            <ProductSchema product={product} />
+            <div className="max-w-6xl mx-auto py-12 px-4 animate-in fade-in duration-500 overflow-x-hidden">
+                <Link href="/" className="inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-8 text-sm transition-colors group font-medium">
+                    <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" /> Back to Products
+                </Link>
 
             <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
                 {/* Left Column: Image & Quick Stats */}
@@ -108,6 +126,7 @@ export default async function ProductPage(props: ProductPageProps) {
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
 }
