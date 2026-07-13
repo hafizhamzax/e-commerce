@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
         description: product.excerpt,
         keywords: [product.title, product.category || 'digital asset', 'premium', 'template', 'creator tool'],
         openGraph: {
-            title: `${product.title} | NexaVault',
+            title: `${product.title} | NexaVault`,
             description: product.excerpt,
             url: `${siteUrl}/products/${product.slug}`,
-            type: 'product',
+            type: 'website',
             images: product.imageUrl ? [product.imageUrl] : ['/og-image.png'],
         },
         twitter: {
