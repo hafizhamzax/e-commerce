@@ -24,7 +24,7 @@ export default async function Home() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-500 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
           </span>
-          New Assets Added Daily
+          New Assets Added soon
         </div>
 
         <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-4">

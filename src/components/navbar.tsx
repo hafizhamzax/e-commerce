@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ShoppingBag, Settings, Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const navLinks = [
     { label: 'Home', href: '/', type: 'route' },
@@ -16,6 +16,20 @@ const navLinks = [
 export function Navbar() {
     const pathname = usePathname();
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        const checkAdmin = async () => {
+            try {
+                const res = await fetch('/api/session');
+                const data = await res.json();
+                setIsAdmin(data.isAdmin);
+            } catch {
+                setIsAdmin(false);
+            }
+        };
+        checkAdmin();
+    }, []);
 
     const handleProductsClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, type: string) => {
         if (type === 'scroll') {
@@ -78,12 +92,14 @@ export function Navbar() {
                 {/* Right Controls */}
                 <div className="flex items-center gap-2">
                     <ThemeToggle />
-                    <Button variant="ghost" size="sm" className="gap-2 hidden sm:flex" asChild>
-                        <Link href="/admin">
-                            <Settings size={16} />
-                            <span className="hidden sm:inline">Admin</span>
-                        </Link>
-                    </Button>
+                    {isAdmin && (
+                        <Button variant="ghost" size="sm" className="gap-2 hidden sm:flex" asChild>
+                            <Link href="/admin">
+                                <Settings size={16} />
+                                <span className="hidden sm:inline">Admin</span>
+                            </Link>
+                        </Button>
+                    )}
 
                     {/* Mobile hamburger */}
                     <button
@@ -113,10 +129,12 @@ export function Navbar() {
                             {link.label}
                         </Link>
                     ))}
-                    <Link href="/admin" className="px-4 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 flex items-center gap-2" onClick={() => setMobileOpen(false)}>
-                        <Settings size={16} />
-                        Admin
-                    </Link>
+                    {isAdmin && (
+                        <Link href="/admin" className="px-4 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 flex items-center gap-2" onClick={() => setMobileOpen(false)}>
+                            <Settings size={16} />
+                            Admin
+                        </Link>
+                    )}
                 </div>
             )}
         </nav>
